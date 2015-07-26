@@ -1,6 +1,6 @@
 //$("#main").append("Ian Hay");
 
-var formattedName = HTMLheaderName.replace("%data%", "Ian Hay");
+/*var formattedName = HTMLheaderName.replace("%data%", "Ian Hay");
 var formattedRole = HTMLheaderRole.replace("%data%", "Lord of Aceness");
 var formattedPic= HTMLbioPic.replace("%data%", "images/fry.jpg");
 var formattedSkills = HTMLskills.replace("%data%",["Aceness","Rocking","Coding"]);
@@ -13,43 +13,170 @@ var bio ={
 	"welcome" : formattedWelcome,
 	"pic" : formattedPic
 
+};*/
+
+var bio ={
+	"name": "Ian Hay",
+	"role": "Lord of Aceness",
+	"skills":["Aceness","Rocking","Coding","Coco Making"],
+	"welcomeMessage" : "Ahoy there!",
+	"contacts":{
+		"mobile": "0777712234",
+		"email": "ian@notanemail.com",
+		"twitter": "@ianthehay",
+		"github":"ianthehay",
+		"location": "Aberdeen"
+	},
+	"bioPic" : "images/fry.jpg"
+	
+
 };
 
-var work ={};
+/*var work ={};
 work.Start = HTMLworkStart;
 work.Employer = HTMLworkEmployer.replace("%data%","DAI")
 work.Title = HTMLworkTitle.replace("%data%","Software Engineer");
-work.Dates = HTMLworkDates.replace("%data%","August 2010 - Present");
+work.Dates = HTMLworkDates.replace("%data%","August 2010 - Present");*/
+
+var work ={
+
+	"jobs":[
+		{
+			"employer":"DAI",
+			"title":"Software Engineer",
+			"location":"Aberdeen",
+			"dates": "August 2010 - Present",
+			"description": "Design, Developement and Commisioning of software solutions."
+		},
+		{
+			"employer":"University of Aberdeen",
+			"title":"Lab Demonstrator",
+			"location":"Aberdeen",
+			"dates": "February 2010 - May 2010",
+			"description": "Assisting teaching of Matlab workshops."
+		},
+
+	]
+};
 
 
-var education = {};
-education["Start"]=HTMLschoolStart;
+var education = {
+"schools": [
+		{
+			"name":"University of Aberdeen",
+			"city":"Aberdeen, Scotland, UK",
+			"degree":"Masters of Engineering",
+			"major":["Electrical and Electronic Engineering"],
+			"dates":"September 2005 - July 2010",
+			"url":"http://www.abdn.ac.uk"
+		},
+		{
+			"name":"Universitat Politecnica de Catalunya",
+			"city":"Terrassa, Catalonia, Spain",
+			"degree":"Erasmus Masters Thesis",
+			"major":["Microcontroller Programming"],
+			"dates":"February2009 - June 2009",
+			"url":"http://www.abdn.ac.uk"
+		}
+
+	],
+"online courses": [
+		{
+			"title":"Web Developement",
+			"school":"Udacity",
+			"dates":"2011",
+			"url":"http://www.udacity.com"
+		},
+		{
+			"title":"Mobile applications for Android Handheld Systems",
+			"school":"University of Maryland and Coursera",
+			"dates":"2014",
+			"url":"http://www.coursera.org"
+		},
+	]
+};
+
+/*education["Start"]=HTMLschoolStart;
 education["Name"]=HTMLschoolName.replace("%data%","University of Aberdeen");
 education["Degree"]=HTMLschoolDegree.replace("%data%","Masters of Engineering");
 education["Dates"]=HTMLschoolDates.replace("%data%","September 2005 - July 2010");
 education["Major"]=HTMLschoolMajor.replace("%data%","Electrical and Electronic Engineering");
+*/
+
+var projects = {
+"projects": [
+		{
+			"title": "SIC Energy from Waste",
+			"dates": "August 2010 - November 2010",
+			"description": "Commisioning of PCS7 DCS, SQL Reporting Server and Silverlight Process Trends Web Application",
+			"images": ["images/sic1.jpg","images/sic2.jpg"]
+		},
+		{
+			"title": "YME",
+			"dates": "December 2010 - December 2012",
+			"description": "Third party testing and validation of ICSS",
+			"images": ["images/YME1.jpg","images/YME2.jpg"]
+		}
+
+	]
 
 
-$("#header").prepend(bio.role);
-$("#header").prepend(bio.name);
-$("#header").append(bio.pic);
+}
+
+$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+
+$("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
+$("#header").append(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
+
+if(bio.skills.length > 0){
+	$("#header").append(HTMLskillsStart);
+	$("#skills").append(HTMLskills.replace("%data%",bio.skills[0]));
+	$("#skills").append(HTMLskills.replace("%data%",bio.skills[1]));
+	$("#skills").append(HTMLskills.replace("%data%",bio.skills[2]));
+	$("#skills").append(HTMLskills.replace("%data%",bio.skills[3]));
+}
+
+var displayWork = function(){
+
+if (work.jobs.length > 0) {
+
+	for (job in work.jobs){
+		$("#workExperience").append(HTMLworkStart);
+		$(".work-entry:last").append((HTMLworkEmployer.replace("%data%",work.jobs[job].employer) + (HTMLworkTitle.replace("%data%",work.jobs[job].title)) ));
+		$(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[job].dates));
+		$(".work-entry:last").append(HTMLworkLocation.replace("%data%",work.jobs[job].location));
+		$(".work-entry:last").append(HTMLworkDescription.replace("%data%",work.jobs[job].description));
+	}
+};
+
+}
+
+displayWork();
+
+
 
 //$("#main").append(bio.name);
 //$("#main").append(bio.role);
-$("#header").append(bio.welcome);
 
-$("#header").append(bio.skills);
 
-$("#workExperience").append(work.Start);
+//$("#header").append(bio.skills);
+
+/*$("#workExperience").append(work.Start);
 $("#workExperience").append(work.Employer);
 $("#workExperience").append(work.Title);
-$("#workExperience").append(work.Dates);
+$("#workExperience").append(work.Dates);*/
 
-$("#education").append(education.Start);
-$("#education").append(education.Name);
-$("#education").append(education.Degree);
-$("#education").append(education.Dates);
-$("#education").append(education.Major);
+// $("#education").append(education.Start);
+// $("#education").append(education.Name);
+// $("#education").append(education.Degree);
+// $("#education").append(education.Dates);
+// $("#education").append(education.Major);
 
 
 
