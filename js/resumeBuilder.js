@@ -44,14 +44,14 @@ var work ={
 		{
 			"employer":"DAI",
 			"title":"Software Engineer",
-			"location":"Aberdeen",
+			"location":"Westhill,Aberdeenshire",
 			"dates": "August 2010 - Present",
 			"description": "Design, Developement and Commisioning of software solutions."
 		},
 		{
 			"employer":"University of Aberdeen",
 			"title":"Lab Demonstrator",
-			"location":"Aberdeen",
+			"location":"Old Aberdeen, Aberdeen",
 			"dates": "February 2010 - May 2010",
 			"description": "Assisting teaching of Matlab workshops."
 		},
@@ -64,7 +64,7 @@ var education = {
 "schools": [
 		{
 			"name":"University of Aberdeen",
-			"city":"Aberdeen, Scotland, UK",
+			"location":"Aberdeen, Scotland, UK",
 			"degree":"Masters of Engineering",
 			"major":["Electrical and Electronic Engineering"],
 			"dates":"September 2005 - July 2010",
@@ -72,11 +72,11 @@ var education = {
 		},
 		{
 			"name":"Universitat Politecnica de Catalunya",
-			"city":"Terrassa, Catalonia, Spain",
+			"location":"Terrassa, Catalonia, Spain",
 			"degree":"Erasmus Masters Thesis",
 			"major":["Microcontroller Programming"],
 			"dates":"February2009 - June 2009",
-			"url":"http://www.abdn.ac.uk"
+			"url":"http://www.upc.edu"
 		}
 
 	],
@@ -95,6 +95,24 @@ var education = {
 		},
 	]
 };
+
+education.display = function(){
+		if (education.schools.length > 0) {
+
+		for (school in education.schools){
+			$("#education").append(HTMLschoolStart);
+			$(".education-entry:last").append(HTMLschoolName.replace("%data%",education.schools[school].name).replace("#",education.schools[school].url));
+			$(".education-entry:last").append(HTMLschoolDegree.replace("%data%",education.schools[school].degree));
+			$(".education-entry:last").append(HTMLschoolDates.replace("%data%",education.schools[school].dates));
+			$(".education-entry:last").append(HTMLschoolLocation.replace("%data%",education.schools[school].location));
+			$(".education-entry:last").append(HTMLschoolMajor.replace("%data%",education.schools[school].major));
+			
+			
+		}
+	};
+}
+
+education.display();
 
 /*education["Start"]=HTMLschoolStart;
 education["Name"]=HTMLschoolName.replace("%data%","University of Aberdeen");
@@ -120,8 +138,25 @@ var projects = {
 
 	]
 
+}
+
+projects.display = function(){
+	if (projects.projects.length > 0) {
+
+	for (project in projects.projects){
+		$("#projects").append(HTMLprojectStart);
+		$(".project-entry:last").append(HTMLprojectTitle.replace("%data%",projects.projects[project].title));
+		$(".project-entry:last").append(HTMLprojectDates.replace("%data%",projects.projects[project].dates));
+		$(".project-entry:last").append(HTMLprojectDescription.replace("%data%",projects.projects[project].description));
+		$(".project-entry:last").append(HTMLprojectImage.replace("%data%",projects.projects[project].images[0]));
+		$(".project-entry:last").append(HTMLprojectImage.replace("%data%",projects.projects[project].images[1]));
+	}
+};
 
 }
+
+
+projects.display();
 
 $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
 $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
@@ -159,7 +194,27 @@ if (work.jobs.length > 0) {
 
 displayWork();
 
+$("#mapDiv").append(googleMap);
 
+
+
+
+function inName(name){
+
+	var finalName = name;
+    console.log(finalName);
+    finalName=finalName.toLowerCase();
+    
+    var arr=finalName.split(' ');
+    finalName = arr[0] + ' ' + arr[1].toUpperCase();
+    finalName = finalName.substring(0,1).toUpperCase()+finalName.substring(1);
+    
+    return finalName;
+
+
+}
+
+//$("#main").append(internationalizeButton);
 
 //$("#main").append(bio.name);
 //$("#main").append(bio.role);
