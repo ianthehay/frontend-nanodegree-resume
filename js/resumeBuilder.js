@@ -95,19 +95,13 @@ education.display = function(){
 			//$(".education-entry:last").append(HTMLonlineSchool.replace("%data%",education["online courses"][course].school));
 			$(".education-entry:last").append(HTMLonlineDates.replace("%data%",education["online courses"][course].dates));
 			$(".education-entry:last").append(HTMLonlineURL.replace("%data%",education["online courses"][course].url));
-			HTMLonlineURL
+			
 		}
 	};
 }
 
 education.display();
 
-/*education["Start"]=HTMLschoolStart;
-education["Name"]=HTMLschoolName.replace("%data%","University of Aberdeen");
-education["Degree"]=HTMLschoolDegree.replace("%data%","Masters of Engineering");
-education["Dates"]=HTMLschoolDates.replace("%data%","September 2005 - July 2010");
-education["Major"]=HTMLschoolMajor.replace("%data%","Electrical and Electronic Engineering");
-*/
 
 var projects = {
 "projects": [
@@ -208,24 +202,6 @@ function inName(name){
 
 }
 
-//$("#main").append(internationalizeButton);
-
-//$("#main").append(bio.name);
-//$("#main").append(bio.role);
-
-
-//$("#header").append(bio.skills);
-
-/*$("#workExperience").append(work.Start);
-$("#workExperience").append(work.Employer);
-$("#workExperience").append(work.Title);
-$("#workExperience").append(work.Dates);*/
-
-// $("#education").append(education.Start);
-// $("#education").append(education.Name);
-// $("#education").append(education.Degree);
-// $("#education").append(education.Dates);
-// $("#education").append(education.Major);
 
 
 
