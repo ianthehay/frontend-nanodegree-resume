@@ -2,7 +2,7 @@
 var bio ={
 	"name": "Ian Hay",
 	"role": "Lord of Aceness",
-	"skills":["Aceness","Rocking","Coding","Coco Making"],
+	"skills":["Aceness","Rocking","Coding","Hot Chocolate Making"],
 	"welcomeMessage" : "Ahoy there!",
 	"contacts":{
 		"mobile": "0777712234",
@@ -94,7 +94,7 @@ education.display = function(){
 			$(".education-entry:last").append(HTMLonlineTitle.replace("%data%",education["online courses"][course].title).replace("#",education["online courses"][course].url) + HTMLonlineSchool.replace("%data%",education["online courses"][course].school));
 			//$(".education-entry:last").append(HTMLonlineSchool.replace("%data%",education["online courses"][course].school));
 			$(".education-entry:last").append(HTMLonlineDates.replace("%data%",education["online courses"][course].dates));
-			$(".education-entry:last").append(HTMLonlineURL.replace("%data%",education["online courses"][course].url));
+			$(".education-entry:last").append(HTMLonlineURL.replace("%data%",education["online courses"][course].url).replace("#",education["online courses"][course].url));
 			
 		}
 	};
