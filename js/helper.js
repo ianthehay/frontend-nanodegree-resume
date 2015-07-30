@@ -111,7 +111,8 @@ function initializeMap() {
   var locations;
 
   var mapOptions = {
-    disableDefaultUI: true
+    disableDefaultUI: true,
+    zoomControl: true
   };
 
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
@@ -177,6 +178,7 @@ function initializeMap() {
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
+      infoWindow.open(map,marker);
     });
 
     // this is where the pin actually gets added to the map.
